@@ -1,0 +1,39 @@
+# Data & datasets
+data/
+
+# Model weights
+Qwen/
+sentence-transformers/
+laion/
+lizhuang144/
+nltk_data/
+rl_qwen2_vl/Qwen/
+rl_llava/llava-hf/
+rl_internvl/OpenGVLab/
+sft/Qwen/
+sft/llava-hf/
+
+# Training outputs
+checkpoints/
+*/outputs/
+
+# Evaluation results
+evaluation/*
+!evaluation/*.json
+!evaluation/*.jsonl
+
+# SFT
+sft/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Binary / large files
+*.pt
+*.pkl
+*.parquet
+*.safetensors
+*.bin
+
