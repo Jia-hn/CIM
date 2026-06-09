@@ -7,26 +7,26 @@
 [![arXiv](https://img.shields.io/badge/cs.CV-2603.01696-b31b1b?logo=arxiv&logoColor=red)](https://arxiv.org/abs/2603.01696)
 [![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Huggingface-yellow)](https://huggingface.co/collections/kkk5/cim-69f0aaa010095c497b781f8e)
 
-## News
+## 🔥 News
 
 * **`2026.06`** We released the training code and model weights for CIM.
 
-## Introduction
+## 📖 Introduction
 
 Large Vision-Language Models (LVLMs) frequently omit or misrepresent visual content in image captions. We observe that caption quality correlates with the similarity between images retrieved via text search using that caption. Based on this insight, we propose **Cross-modal Identity Mapping (CIM)**, a reinforcement learning framework for improving image captioning without extra annotations.
 
 CIM evaluates information loss through two reward signals:
 
-- **Gallery Representation Consistency (GRC)** — measures whether the generated caption retrieves images whose representations are consistent with the gallery.
-- **Query-gallery Image Relevance (QIR)** — measures the relevance between the query image and the images retrieved by the caption.
+- **Gallery Representation Consistency (GRC)** — quantifies the internal consistency among images retrieved by the caption, indicating the descriptive granularity.
+- **Query-gallery Image Relevance (QIR)** — measures the visual similarity between the source image and the images retrieved by the caption, indicating the caption correctness.
 
 Under these rewards, the LVLM minimizes information loss and aims to achieve identity mapping from images to captions. Experiments show that CIM outperforms Supervised Fine-Tuning, achieving a **20% improvement in relation reasoning** on the COCO-LN500 benchmark with Qwen2.5-VL-7B.
 
 <p align="center">
-    <img src="./assets/framework.png" width="90%">
+    <img src="./assets/framework.png" width="100%">
 </p>
 
-## Model Zoo
+## 🏠 Model Zoo
 
 All model weights are available on [Hugging Face](https://huggingface.co/collections/kkk5/cim-69f0aaa010095c497b781f8e):
 
@@ -41,7 +41,7 @@ All model weights are available on [Hugging Face](https://huggingface.co/collect
 | CIM-Qwen2-VL-7B-SFT | Qwen2-VL-7B-Instruct | SFT + GRPO | [kkk5/CIM-Qwen2-VL-7B-SFT](https://huggingface.co/kkk5/CIM-Qwen2-VL-7B-SFT) |
 | CIM-LLaVA1.5-7B-SFT | LLaVA-1.5-7B | SFT + GRPO | [kkk5/CIM-LLaVA1.5-7B-SFT](https://huggingface.co/kkk5/CIM-LLaVA1.5-7B-SFT) |
 
-## Installation
+## 🔧 Installation
 
 ```bash
 git clone https://github.com/Jia-hn/CIM.git
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 > pip install flash-attn --no-build-isolation
 > ```
 
-## Data Preparation
+## 📦 Data Preparation
 
 ### 1. Download Images
 
@@ -88,7 +88,7 @@ python preprocess/embedding_densefusion_caption.py
 torchrun --nproc_per_node=8 preprocess/embedding_densefusion_image.py
 ```
 
-## Training
+## 🚀 Training
 
 Each script automatically starts the CIM reward server, runs GRPO training, and performs evaluation. Training requires **8 GPUs**.
 
@@ -112,7 +112,7 @@ bash rl_internvl/scripts/coco6k_internvl2.5_8b_grpo.sh
 bash rl_internvl/scripts/coco6k_internvl3_8b_grpo.sh
 ```
 
-## Evaluation
+## 📊 Evaluation
 
 Evaluation is integrated into the training scripts and runs automatically after training. It evaluates on **COCO-LN500** and **DOCCI500** benchmarks.
 
@@ -125,7 +125,7 @@ python -m eval.eval_internvl --model_type base --model_path <path_to_model>
 
 Results are saved to `evaluation/<model_name>/<dataset>_metrics.txt`.
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 CIM/
@@ -147,11 +147,11 @@ CIM/
 └── requirements.txt
 ```
 
-## Acknowledgement
+## 🙏 Acknowledgement
 
 This repo benefits from [verl](https://github.com/volcengine/verl) and [CAPTURE](https://github.com/yangbang18/CAPTURE). Thanks for their wonderful works.
 
-## Citation
+## 📝 Citation
 
 If you find this work useful, please cite:
 
